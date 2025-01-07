@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import {
     Dialog,
     DialogContent,
@@ -11,6 +12,7 @@ import {
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { useForm } from "react-hook-form"
 
@@ -66,7 +68,12 @@ export function AddTaskModal() {
                                 <FormItem>
                                     <FormLabel >Due Date</FormLabel>
                                     <FormControl>
-                                        <Input {...field} value={field.value || ''} />
+                                        <Calendar
+                                            mode="single"
+                                            selected={date}
+                                            onSelect={setDate}
+                                            className="rounded-md border"
+                                        />
                                     </FormControl>
                                 </FormItem>
                             )}
@@ -78,7 +85,17 @@ export function AddTaskModal() {
                                 <FormItem>
                                     <FormLabel >Priority</FormLabel>
                                     <FormControl>
-                                        <Input {...field} value={field.value || ''} />
+                                        <Select>
+                                            <SelectTrigger className="w-[180px]">
+                                                <SelectValue placeholder="Theme" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="light">Light</SelectItem>
+                                                <SelectItem value="dark">Dark</SelectItem>
+                                                <SelectItem value="system">System</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+
                                     </FormControl>
                                 </FormItem>
                             )}
