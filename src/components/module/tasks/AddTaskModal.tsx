@@ -16,6 +16,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import { addTask } from "@/redux/features/task/taskSlice"
+import { useAppDispatch } from "@/redux/hook"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -24,9 +26,9 @@ import { Link } from "react-router-dom"
 export function AddTaskModal() {
 
     const form = useForm()
-
+    const dispatch = useAppDispatch()
     const onSubmit = (data) => {
-        console.log(data);
+        dispatch(addTask(data))
 
     }
 
@@ -66,9 +68,9 @@ export function AddTaskModal() {
                                 </FormItem>
                             )}
                         />
-                         <FormField
+                        <FormField
                             control={form.control}
-                            name="email"
+                            name="priority"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Priority</FormLabel>
@@ -129,7 +131,7 @@ export function AddTaskModal() {
                                 </FormItem>
                             )}
                         />
-                       
+
                         <DialogFooter>
                             <Button type="submit" className="mt-5">Save changes</Button>
                         </DialogFooter>
