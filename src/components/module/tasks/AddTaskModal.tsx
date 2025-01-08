@@ -9,26 +9,25 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { addTask } from "@/redux/features/task/taskSlice"
 import { useAppDispatch } from "@/redux/hook"
+import { ITask } from "@/types"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
-import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 
 export function AddTaskModal() {
 
     const form = useForm()
     const dispatch = useAppDispatch()
-    const onSubmit = (data) => {
-        dispatch(addTask(data))
+    const onSubmit : SubmitHandler<FieldValues> = (data) => {
+        dispatch(addTask(data as ITask))
 
     }
 
