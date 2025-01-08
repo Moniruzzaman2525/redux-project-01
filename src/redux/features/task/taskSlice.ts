@@ -19,7 +19,7 @@ const initialState: InitialState = {
             priority: 'low'
         },
         {
-            id: '25',
+            id: '2dd5',
             title: "Initialize frontend",
             description: 'Create home page, and routing',
             dueDate: '2025-11',
@@ -27,7 +27,7 @@ const initialState: InitialState = {
             priority: 'medium'
         },
         {
-            id: '25',
+            id: '2f5',
             title: "Initialize frontend",
             description: 'Create home page, and routing',
             dueDate: '2025-11',
